@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh '. venv/bin/activate && pip install -e '.[test]' && coverage run -m pytest && coverage report'
+                sh '. venv/bin/activate && pip install -e './tests/conftest.py' && coverage run -m pytest && coverage report'
             }
         }
         stage('Deploy') {
