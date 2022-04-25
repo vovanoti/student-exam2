@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                sh 'python3 ./tests/conftest.py'
             }
         }
         stage('Deploy') {
