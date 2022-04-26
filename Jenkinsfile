@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Testing') {
             steps {
+		sh 'whoami'
                 sh 'sh test.sh'
             }
         }
