@@ -2,20 +2,20 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
+        stage('Testing') {
             steps {
                 sh 'sh test.sh'
             }
         }
-        stage('Deploy') {
+        stage('Bulding') {
             steps {
-                sh 'docker build -t vovanoti/cicd_exam:calc_js .'
+                docker.build("vovanoti/cicd_exam:calc_js")
             }
         }
+	stage('Pushing the image'){
+	    steps {
+		echo 'Pushing...'
+	    }
+	}
     }
 }
