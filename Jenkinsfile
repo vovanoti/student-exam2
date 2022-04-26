@@ -24,8 +24,10 @@ pipeline {
         }
 	stage('Pushing the image'){
 	    steps {
-		withDockerRegistry([ credentialsId: "docker-credentials", url: "" ]){
-		    sh "docker push vovanoti/cicd_exam:latest"
+		script {
+		    docker.withRegistry( '',registryCredential ){
+			dockerImage.push()
+		    }
 		}
 		echo 'Pushing...'
 	    }
