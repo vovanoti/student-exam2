@@ -1,4 +1,3 @@
 #!/bin/bash
 
-python3 -m venv venv && . venv/bin/activate && pip install -e . 
-#&& pip install -e '.[test]' && coverage run -m pytest && coverage report
+. /student-exam2/venv/bin/activate && export FLASK_APP=js_example && export LC_ALL=en_US.UTF-8 && export LANG=en_US.UTF-8 && flask run

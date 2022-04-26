@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker images'
+                sh 'docker build -t vovanoti/cicd_exam:calc_js .'
             }
         }
     }
