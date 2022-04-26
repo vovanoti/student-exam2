@@ -1,4 +1,9 @@
 pipeline {
+    environment {
+	registry = "vovanoti/cicd_exam"
+	registryCredential = 'docker-credentials'
+	dockerImage = ''
+}
     agent any
 
     stages {
@@ -9,12 +14,19 @@ pipeline {
         }
         stage('Bulding') {
             steps {
+		script {
+		    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+		}
 		echo 'Building...'
-               //docker.build("vovanoti/cicd_exam:calc_js")
             }
         }
 	stage('Pushing the image'){
 	    steps {
+		script {
+		    docker.withRegistry( '',registryCredential ){
+			dockerImage.push()
+		    }
+		}
 		echo 'Pushing...'
 	    }
 	}
