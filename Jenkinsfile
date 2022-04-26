@@ -10,7 +10,7 @@ pipeline {
         stage('Bulding') {
             steps {
 		echo 'Building...'
-               #docker.build("vovanoti/cicd_exam:calc_js")
+               //docker.build("vovanoti/cicd_exam:calc_js")
             }
         }
 	stage('Pushing the image'){
